@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+	xmlns:p="http://www.springframework.org/schema/p"
+	>
+ 	<bean id="m1" class="com.kitri.ditest.MemberDto">
+		<constructor-arg index="1">
+			<value>홍길동</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>hong</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="m2" class="com.kitri.ditest.MemberDto">
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="25" type="int"/>	<!-- value는 무조건 String으로만 저장한다? → 그래서 type을 int로 지정! -->
+	</bean>
+	
+	<bean id="m3" class="com.kitri.ditest.MemberDto">
+		<constructor-arg value="황선혜"/>
+		<constructor-arg value="2000000" type="double" />
+	</bean>
+	
+	<bean id="m4" class="com.kitri.ditest.MemberDto">
+		<constructor-arg value="황선혜" index="1"/>
+		<constructor-arg value="seon" name="id"/>
+		<constructor-arg value="24" type="int"/>
+		<constructor-arg value="2000000" type="double"/>
+	</bean>
+	
+	<bean id="m5" class="com.kitri.ditest.MemberDto">
+		<constructor-arg value="황선혜" index="1"/>
+		<constructor-arg value="seon" name="id"/>
+		<constructor-arg value="24" type="int"/>
+		<constructor-arg value="2000000" type="double"/>
+		<constructor-arg ref="address1"/>
+	</bean>
+	
+	<bean id="address1" class="com.kitri.ditest.AddressDto">
+		<constructor-arg value="23456"/>
+		<constructor-arg value="서울시 구로구 구로디지털로 34길 코오롱싸이언스벨리 1차"/>
+		<constructor-arg value="4층 한국정보기술연구원 4강의장"/>
+	</bean>
+	
+	<bean id="m6" class="com.kitri.ditest.MemberDto" init-method="init">	<!-- 디폴트생성자를 사용하려먼 set___뒤에 있는걸 id로 쓰면된다  -->
+		<property value="황선혜" name="name"/>
+		<property value="seon" name="id"/>
+		<property value="25" name="age"/>
+		<property ref="address2" name="addressDto"></property>
+	</bean>
+	
+	
+	<bean id="address2" class="com.kitri.ditest.AddressDto">
+		<property name="zipcode" value="12345"/>
+		<property name="address" value="서울시 구로구"/>
+		<property name="addressDetail" value="집가고싶다"/>
+	</bean>
+	
+	<bean id="m7" class="com.kitri.ditest.MemberDto"
+		p:id="java"
+		p:name="이순신"
+		p:age="33"
+		p:money="25360000"
+		p:addressDto-ref="address3"
+	/>
+	<bean id="address3" class="com.kitri.ditest.AddressDto"
+		p:zipcode="12345"
+		p:address="전라도"
+		p:addressDetail="3층"
+	/>
+</beans>

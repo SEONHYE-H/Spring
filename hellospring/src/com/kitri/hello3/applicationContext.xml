@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean id="hd" class="com.kitri.hello3.HelloDao"/>
+	
+	<!-- HelloService helloService = new HelloServiceKor(); -->
+	<bean id="hs" class="com.kitri.hello3.HelloServiceKor"><!-- 싱글톤이야암! --><!-- 의존성 주입....? -->
+		<!-- <property name="helloDao" ref="hd"/> --> <!-- set___에서 뒤에것의 소문자가 프로퍼티 이름이다! -->
+		<constructor-arg ref="hd"></constructor-arg><!-- 생성자의 인자값이다! -->
+	</bean>
+
+	<bean id="hs1" name="hservice, helloservice, hseng" class="com.kitri.hello3.HelloServiceEng" scope="prototype"/><!-- 싱글톤 아님?! 서로라느 객체가 getBean할때 각자 생성된다 -->
+	<!-- name은 여러개 쓸 수 있다. 그렇지만 보통 id를 많이 사용한다 name은 신경쓸게 많다~ -->
+</beans>

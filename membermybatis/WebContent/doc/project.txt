@@ -1,0 +1,91 @@
+membermvc
+	src
+	  - com.kitri.admin.controller
+	    AdminController.java (Servlet : /admin)
+	  
+	  - com.kitri.admin.model
+	  
+	  - com.kitri.admin.model.dao
+	    AdminDao.java (Interface)
+	    AdminDaoImpl.java
+	  
+	  - com.kitri.admin.model.service
+	    AdminService.java (Interface)
+	    AdminServiceImpl.java
+	  
+	  - com.kitri.member.controller
+	    MemberController.java (Servlet : /user)
+	  
+	  - com.kitri.member.model
+	    MemberDto.java
+	    MemberDetailDto.java
+	    ZipcodeDto.java
+	  
+	  - com.kitri.member.model.dao
+	    MemberDao.java (Interface)
+	    MemberDaoImpl.java
+	    
+	  - com.kitri.member.model.service
+	    MemberService.java (Interface)
+	    MemberServiceImpl.java
+	  
+	  - com.kitri.util
+	    DBConnection.java
+	    DBClose.java
+	  	Encoder.java
+		
+	webContent( - : 폴더 , : 구분)
+	  - js : member.js
+	  - css : *.css
+	  - img : *.jpg, png, gif
+	  - admin
+	    - member
+	      memberlist.jsp
+
+	    
+	  - user
+		- member
+		  member.jsp
+		  registerok.jsp
+		  registerfail.jsp
+		  idcheck.jsp
+		  zipsearch.jsp
+		  membermodify.jsp
+		  
+		- login
+		  login.jsp
+		  loginok.jsp
+		  loginfail.jsp
+		  
+	   index.jsp
+	   
+	   
+	   
+	   
+** HttpSession & Cookie : 저장할 수 있는 저장공간
+Cookie		:	client	txt		>> String	// 일반인도 볼 수 있음
+(사용용도 : 검색하고 그 기록으로 광고뜨는거...?, 오늘 그만보기, 오늘본상품들)
+
+HttpSession	:	server	memory	>> Object	// 관리자만 볼 수 있음?
+
+
+
+오늘본 상품	-- 쿠키
+찜목록(위시리스트)->그 물건 자체만	-- DB를 사용했다는거지??
+장바구니->그 물건의 전체적인 정보가 들어가있다(상세정보)	-- DTO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

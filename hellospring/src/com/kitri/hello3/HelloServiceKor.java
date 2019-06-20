@@ -4,19 +4,19 @@ public class HelloServiceKor implements HelloService{
 	
 	private HelloDao helloDao;
 	//쉬운방법
-	public void HelloServiceKor (HelloDao helloDao) {
+	public HelloServiceKor (HelloDao helloDao) {
 		this.helloDao = helloDao;
 	}
 
 	
-	public void setHelloDao(HelloDao helloDao) {
-		this.helloDao = helloDao;
-	}
-	
-	
-	public HelloServiceKor() {
-		System.out.println("HelloServiceKor 생성자 호출!!!");
-	}
+//	public void setHelloDao(HelloDao helloDao) {
+//		this.helloDao = helloDao;
+//	}
+//	
+//	
+//	public HelloServiceKor() {
+//		System.out.println("HelloServiceKor 생성자 호출!!!");
+//	}
 	
 
 	public String hello(String name) {

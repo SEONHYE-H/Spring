@@ -28,9 +28,9 @@ public class HelloMain {
 		
 		System.out.println(msg);
 		
-		HelloService h1 = new HelloServiceKor();
-		HelloService h2 = new HelloServiceEng();
-		System.out.println(h1 + "     " + h2);
+//		HelloService h1 = new HelloServiceKor();
+//		HelloService h2 = new HelloServiceEng();
+//		System.out.println(h1 + "     " + h2);
 		
 		HelloService h3 = context.getBean("hs", HelloService.class);
 		HelloService h4 = context.getBean("hs", HelloService.class);

@@ -41,7 +41,8 @@
 	<select id="loginMember" parameterType="map" resultType="memberDto">
 		select name, id, emailid, emaildomain, joindate 
 		from member 
-		where id = #{userid} and pass = #{userpwd}
+		<!-- where id = #{userid} and pass = #{userpwd} -->
+		where id = #{id} and pass = #{pass} <!-- map을 스프링한테 위임해서 이름을 맞춰줘야한다네? -->
 	</select>
 
 </mapper>

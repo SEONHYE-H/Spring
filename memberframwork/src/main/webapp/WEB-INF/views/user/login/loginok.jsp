@@ -10,23 +10,23 @@ if(memberDto != null){
 <script type = "text/javascript">
 function deleteMember(){
 	if(confirm("탈퇴하시겠습니까?")){
-		document.location.href = "${root}/user?act=deltemember";
+		$(location).attr("href", "${root}/user/delete.kitri");
 	}
 }
 </script>
 <strong><%--=memberDto.getName()--%>${userInfo.name}(<%--=memberDto.getId()--%>${userInfo.id})</strong>님 안녕하세요<br>
-<a href="${root}/user?act=logout">로그아웃</a>
-<a href="${root}/user?act=mvmodify">정보수정</a>
+<a href="${root}/user/logout.kitri">로그아웃</a>
+<a href="${root}/user/mvmodify.kitri">정보수정</a>
 <a href="#" onclick="javascript:deleteMember();">회원탈퇴</a>
 	<%--
 	if("ghkdtjsgP".equals(memberDto.getId())){
 	--%>
 	<c:if test="${'java2' == userInfo.id}">
-	<a href="${root}/admin?act=memberlist">관리자</a>
+	<a href="${root}/admin/mvmemberlist.kitri">관리자</a>
 	</c:if>
 </c:if>
 <c:if test="${userInfo == null}">
-	<c:redirect url="/user?act=mvlogin"/>
+	<c:redirect url="/user/login.kitri"/>
 <%--  
 	}
 }else{

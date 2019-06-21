@@ -18,6 +18,43 @@ $(document).ready(function(){
 function memberList(key, word){
 	$("#mlist").empty();
 	$.ajax({
+		url:"${root}/admin/getmemberlist.kitri",	
+		type:"get",			//form의 type 비슷하다
+		dataType:"json",
+		data : {"key" : key, "word" : word},
+		//	"act=getmemberlist&key="+ key + "&word=" + word,	// val() : get  || val(sadfsafd) : set
+		timeout : 30000,
+		cache:false,
+		success:function(data){	// 성공  <- callback 함수같은거!
+			var member = data.memberlist;
+			var len = member.length;
+			var view = "";
+			for(var i=0; i<len;i++){
+				
+				var id = member[i].id;
+				var name = member[i].name;
+				var email = member[i].emailid;
+				var tel = member[i].tel1 + "-" + member[i].tel2 + "-" member[i].tel3;
+				var address = member[i].address;
+				var joindate = member[i].joindate;
+				
+				view += "<tr>\n";
+				view += "	<td>" + id + "</td>\n";
+				view += "	<td>" + name + "</td>\n";
+				view += "	<td>" + email + "</td>\n";
+				view += "	<td>" + tel + "</td>\n";
+				view += "	<td>" + address + "</td>\n";
+				view += "	<td>" + joindate + "</td>\n";
+
+				$("#mlist").append(view);
+			}
+		}
+	});
+}
+
+/* function memberList(key, word){
+	$("#mlist").empty();
+	$.ajax({
 		url:"${root}/admin",	
 		type:"get",			//form의 type 비슷하다
 		dataType:"xml",
@@ -47,7 +84,7 @@ function memberList(key, word){
 			}
 		}
 	});
-}
+} */
 </script>
 <div class="table-responsive-lg">
   <h2>회원목록</h2>

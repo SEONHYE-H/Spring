@@ -81,10 +81,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDto loginMember(String id, String pass) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("userid", id);
-		map.put("userpwd", pass);
+	public MemberDto loginMember(Map<String, String> map) {
+//		Map<String, String> map = new HashMap<String, String>();
+//		map.put("userid", id);
+//		map.put("userpwd", pass);	맵으로 바꿔서 이제 필요없다!!
 		return memberDao.loginMember(map);
 	}
 
@@ -102,7 +102,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int deleteMember(String id) {
-		
 		return 0;
 	}
 

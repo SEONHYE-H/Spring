@@ -41,11 +41,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/register.kitri", method = RequestMethod.POST)
-	public String register(MemberDetailDto memberdetailDto, Model model) {	// 이렇게 하면 set set set 할필요 없다! 단, form에 있는 속성의 이름과 dto의 이름이 같아야한다!
-		int cnt = memberService.registerMember(memberdetailDto);
+	public String register(MemberDetailDto memberDetailDto, Model model) {	// 이렇게 하면 set set set 할필요 없다! 단, form에 있는 속성의 이름과 dto의 이름이 같아야한다!
+		int cnt = memberService.registerMember(memberDetailDto);
 		if (cnt != 0) {
 //			model.addAttribute("userInfo", memberdetailDto);
-			model.addAttribute("registerInfo", memberdetailDto);
+			model.addAttribute("userInfo", memberDetailDto);
 			return "user/member/registerok";	// view 가 된다 저 위에 model은 모델이 된다는데... 왜...?굳이...?
 		}
 		return "user/member/registerfail";
@@ -85,7 +85,7 @@ public class MemberController {
 //			return "user/login/loginfail";
 //		}
 //	}
-	
+
 	@RequestMapping(value = "/login.kitri", method = RequestMethod.POST)
 	public String login(@RequestParam Map<String, String> map,	//이렇게만 하면 모델이 된다 하지만 우리는 파라미터를 가져와야한다!
 						HttpSession session
@@ -112,11 +112,35 @@ public class MemberController {
 		session.setComplete();
 		return "redirect:/index.jsp";	// redirct 안붙이면 이상하게 들어간다구
 	}
+	
+	
+	
+//	1. 회원정보수정화면 띄우기
+	@RequestMapping(value = "/mvmodify.kitri")
+	public String modify(@ModelAttribute("userInfo") MemberDto memberDto, HttpSession session) {
+		//session.setAttribute("userInfo", memberDto);
+		return "user/member/modify";
+	}
+	
+//	2. 회원정보수정하기
+	@RequestMapping(value = "/modify.kitri")
+	public String modifyMember(MemberDetailDto memberDetailDto, Model model, HttpSession session) {	// 이렇게 하면 set set set 할필요 없다! 단, form에 있는 속성의 이름과 dto의 이름이 같아야한다!
+		int cnt = memberService.modifyMember(memberDetailDto);
+		if (cnt != 0) {
+			System.out.println("내가 지금 뭐하고있나 참 궁금하다");
+			model.addAttribute("userInfo", memberDetailDto);
+			return "user/login/loginok";	// view 가 된다 저 위에 model은 모델이 된다는데... 왜...?굳이...?
+		}
+		System.out.println("뭐겠어 삽질이지 ");
+		return "user/member/registerfail";
+	}
+	
+//	1. 탈퇴
+	@RequestMapping(value = "/delete.kitri")
+	public String deleteMember(@ModelAttribute("userInfo") MemberDto memberDto, SessionStatus session) { //@ModelAttribute("userInfo")세션안에 있는 userInfo를 가져와라!
+		System.out.println(memberDto.getId());
+		memberService.deleteMember(memberDto.getId());
+		session.setComplete();
+		return "redirect:/index.jsp";	// redirct 안붙이면 이상하게 들어간다구
+	}
 }
-
-
-
-
-
-
-

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <%-- <script type="text/javascript" src = "${root}/js/httpRequest.js"></script> --%>
 <script type="text/javascript">
 
@@ -41,7 +43,8 @@ $(document).ready(function() {
 		if ($("#id").val().trim().length == 0) {
 			alert("아이디 입력!!!");
 			return;
-		}else if ($("#name").val().trim().length == 0) {
+		}else 	
+			if ($("#name").val().trim().length == 0) {
 			alert("이름 입력!!!");
 			return;
 		}else if ($("#pass").val().trim().length == 0) {

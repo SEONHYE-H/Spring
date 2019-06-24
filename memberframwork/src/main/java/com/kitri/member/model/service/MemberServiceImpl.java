@@ -95,14 +95,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int modifyMember(MemberDetailDto memberDetailDto) {
-		
-		return 0;
+	public int modifyMember(MemberDetailDto memberDetailDto) {	
+		return memberDao.modifyMember(memberDetailDto);
 	}
 
 	@Override
 	public int deleteMember(String id) {
-		return 0;
+		return memberDao.deleteMember(id);
 	}
 
 	

@@ -44,5 +44,18 @@
 		<!-- where id = #{userid} and pass = #{userpwd} -->
 		where id = #{id} and pass = #{pass} <!-- map을 스프링한테 위임해서 이름을 맞춰줘야한다네? -->
 	</select>
+	
+	<select id="modifyMember" parameterType="memberDetailDto" >
+		update member
+		set pass=#{pass}, emailid = #{emailid}, emaildomain = #{emaildomain}
+		where id = #{id}
+	</select>
+	
+	<select id="deleteMember" parameterType="String"  resultType="memberDto">
+		delete from member_detail 
+		where id = #{id}
+		delete from member
+		where  id = #{id}
+	</select>
 
 </mapper>

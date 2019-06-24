@@ -17,7 +17,7 @@ function deleteMember(){
 <strong><%--=memberDto.getName()--%>${userInfo.name}(<%--=memberDto.getId()--%>${userInfo.id})</strong>님 안녕하세요<br>
 <a href="${root}/user/logout.kitri">로그아웃</a>
 <a href="${root}/user/mvmodify.kitri">정보수정</a>
-<a href="#" onclick="javascript:deleteMember();">회원탈퇴</a>
+<a href="${root}/user/delete.kitri">회원탈퇴</a>
 	<%--
 	if("ghkdtjsgP".equals(memberDto.getId())){
 	--%>

@@ -65,12 +65,27 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int modifyMember(MemberDetailDto memberDetailDto) {
 		SqlSession session = MyBatisConfiguration.getSqlSessionFactory().openSession();
-		return 0;
+		System.out.println("dao에 들어오긴했니?");
+		try {	
+			session.update(NAME_SPACE + ".modifyMember", memberDetailDto);
+			session.commit();	// 커밋을 안해줘서 회원가입 성공은 했지만 DB에 저장은 안됐음
+			return 1;
+		}finally{
+			session.close();
+		}
+
 	}
 
 	@Override
 	public int deleteMember(String id) {
 		SqlSession session = MyBatisConfiguration.getSqlSessionFactory().openSession();
-		return 0;
-	}										
+		System.out.println("dao : " + id);
+		try {
+			session.delete(NAME_SPACE + ".deleteMember", id);
+			session.commit();	// 커밋을 안해줘서 회원가입 성공은 했지만 DB에 저장은 안됐음
+			return 1;
+		}finally{
+			session.close();
+		}
+	}
 }
